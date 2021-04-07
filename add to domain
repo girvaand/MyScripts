@@ -1,0 +1,1 @@
+add-computer -computername srvcore01, srvcore02 -domainname ad.contoso.com –credential AD\adminuser -restart –force
