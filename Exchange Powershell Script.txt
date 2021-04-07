@@ -1,0 +1,14 @@
+Website Link: 
+https://docs.microsoft.com/en-us/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps
+
+
+Powershell in admin mode
+
+Install-Module ExchangeOnlineManagement
+
+Import-Module ExchangeOnlineManagement
+
+Connect-ExchangeOnline -UserPrincipalName <UPN> [-ExchangeEnvironmentName <Value>] [-DelegatedOrganization <String>] [-PSSessionOption $ProxyOptions]
+Ex: Connect-ExchangeOnline -UserPrincipalName helpdesk@phcenters.com
+
+Search-Mailbox -identity "alisha williams" -SearchQuery 'Subject:"Summary of Documented Needs: Monday, March 22, 2021"' -DeleteContent
