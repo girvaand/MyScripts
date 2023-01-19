@@ -1,0 +1,5 @@
+Unlock-SPOSensitivityLabelEncryptedFile -FileUrl "https://phcenters.sharepoint.com/sites/CorporateCompliance/Shared%20Documents/Corporate%20Compliance/Corporate%20Compliance%201/Complaints%20Comments%20Reports/Complaint%20Details%20Working%20Document/Complaint%20Details%20Working%20Document%202022%20-%20OLD.xlsx"
+
+Connect-SPOService -Url https://phcenters-admin.sharepoint.com 
+
+-Credential helpdesk@phcenters.com

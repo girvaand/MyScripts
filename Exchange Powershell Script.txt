@@ -1,14 +1,45 @@
 Website Link: 
 https://docs.microsoft.com/en-us/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps
 
+Create a content search in Compliance center. Review the results for accuracy.
 
 Powershell in admin mode
 
+//Connect to Compliance Center
+https://docs.microsoft.com/en-us/powershell/exchange/connect-to-scc-powershell?view=exchange-ps
+
 Install-Module ExchangeOnlineManagement
+Connect-IPPSSession -Credential $usercredential
+
+//List the search
+Get-ComplianceSearch
+
+//Delete 
+new-compliancesearchaction -searchname "phishing" -purge -purgetype harddelete (or softdelete)
+
+
+
+Install-Module ExchangeOnlineManagement
+
+//Connect to Exchange Online using Powershell.
 
 Import-Module ExchangeOnlineManagement
 
 Connect-ExchangeOnline -UserPrincipalName <UPN> [-ExchangeEnvironmentName <Value>] [-DelegatedOrganization <String>] [-PSSessionOption $ProxyOptions]
 Ex: Connect-ExchangeOnline -UserPrincipalName helpdesk@phcenters.com
 
+//Delete content
 Search-Mailbox -identity "alisha williams" -SearchQuery 'Subject:"Summary of Documented Needs: Monday, March 22, 2021"' -DeleteContent
+
+//Search activesync devices
+
+Command 1: $UserList = Get-CASMailbox -Filter "HasActiveSyncDevicePartnership -eq `$true -and -not DisplayName -like 'CAS_{*'"
+Command 2: Get-Mailbox $UserList | foreach {Get-ActiveSyncDeviceStatistics -Mailbox $_}
+
+Add-MailboxFolderPermission -Identity rmankin@phcenters.com:\calendar -user thuffman@phcenters.com -AccessRights Editor
+
+Add-MailboxPermission -Identity "Rebecca Mankin" -User "Tehya Huffman" -AccessRights FullAccess -InheritanceType All
+
+
+Remove-MailboxPermission -Identity <Mailbox ID1> -User <Mailbox ID2> -AccessRights FullAccess
+Add-MailboxPermission -Identity "IT Helpdesk" -User "Sagar Dangi" -AccessRights FullAccess -InheritanceType All -Automapping $false
